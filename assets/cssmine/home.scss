@@ -1,0 +1,37 @@
+@import 'nav.css';
+
+.hero-section{
+    width: 100%;
+    height: calc(100vh - 120px);
+    background-image: url('../images/landing-page-cover.jpeg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section .logo{
+    height: 150px;
+    display: block;
+    margin: auto;
+}
+
+.hero-section .sub-heading{
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgb(0,0,0, 0.5);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: poppins;
+    font-size: 50px;
+    letter-spacing: 10px;
+    width: auto;
+    border-radius: 25px;
+    border: 1px black solid 0.5;
+}
+

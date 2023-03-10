@@ -1,0 +1,36 @@
+li {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.nav > a {
+  font-size: 25px;
+}
+
+.nav-item > a {
+  font-size: 15px;
+}
+
+.nav-text {
+  font-size: 25px;
+}
+
+.above-sidebar {
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 50px;
+  color: white;
+  padding: 40 0 0 40;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+supported by Chrome, Edge, Opera and Firefox */
+}
+
+.color-surplus1 {
+  font-size: 15px;
+  color: rgb(243, 175, 50);
+  font-weight: lighter;
+}/*# sourceMappingURL=landing-page-unlog.css.map */

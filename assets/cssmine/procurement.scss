@@ -1,0 +1,251 @@
+body {
+    margin: 0;
+    background-color: #bbbbbb;
+    font-weight: bolder;
+}
+
+
+
+.logo {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.border-container > *{
+    border: 3px solid black;
+    padding: 20px;
+}
+
+input {
+    text-align: center;
+    font-size: 15px;
+    border: 2px solid black;
+}   
+
+.quantity {
+    width: 50px;
+    font-size: 15px;
+}
+
+select {
+    width: 250px;
+    font-size: 24px;
+}
+
+.shipping-via {
+   margin-top: 20px;
+   width: 100px;
+}
+
+span {
+    border-top: 3px solid black;
+    width: 129%;
+    display: block;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+}
+
+.introduction > h2 {
+    margin-left: 45px;
+}
+
+.pro {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.forms-container {
+   display: grid;
+   justify-content: center;
+   grid-template-columns: 3fr 1fr;
+   grid-template-rows: auto auto;
+   gap: 5px;
+   margin: 40px;
+   grid-template-areas: 
+   "header header";
+}
+
+.grid-item-1 {
+    grid-column-start: 7;
+    grid-row: 2;
+    height: 50px;
+    width: 250px;
+    font-size: 15px;
+}
+
+.grid-item-2 {
+    grid-column-start: 5;
+    grid-row: 2;
+}
+
+.grid-item-3 {
+    grid-column-start: 5;
+    grid-row: 3;
+}
+
+.grid-item-4 {
+    height: 50px;
+    width: 250px;
+    grid-row: 3;
+    grid-column-start: 7;
+    font-size: 15px;
+}
+
+.grid-item-5 {
+    grid-row: 8;
+    grid-column: 1;
+    background-color: rgb(75, 116, 218);
+    color: white;
+    font-weight: bolder;
+    width: 50vh;
+    height: 40px;
+    text-align: center;
+}
+.grid-item-6 {
+    grid-row: 9;
+}
+
+.grid-item-7 {
+    grid-row: 10;
+}
+
+.grid-item-8 {
+    grid-row: 11;
+}
+
+.grid-item-9 {
+    grid-row: 12;
+}
+
+.grid-item-10 {
+    grid-row: 13;
+}
+
+.grid-item-11 {
+    grid-row: 8;
+    grid-column: 3;
+    background-color: rgb(75, 116, 218);
+    color: white;
+    font-weight: bolder;
+    width: 300px;
+    height: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+.grid-item-12 {
+    grid-row: 9;
+    grid-column: 3;
+}
+
+.grid-item-13 {
+    grid-row: 10;
+    grid-column: 3;
+}
+
+.grid-item-14 {
+    grid-row: 11;
+    grid-column: 3;
+}
+
+.grid-item-15 {
+    grid-row: 12;
+    grid-column: 3;
+}
+
+.grid-item-16 {
+    grid-row: 13;
+    grid-column: 3;
+}
+
+// THIS IS FOR SHIPPING 
+
+.shipping-form-container {
+    font-size: 21px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(75, 116, 218);
+    color: white;
+}
+
+.vl {
+    border-left: 6px solid white;
+    height: auto;
+  }
+
+ .box {
+         width: auto;
+         border: 5px solid white;
+         height: 45px;
+         display: flex;
+         justify-content: space-evenly;
+ }
+
+ .vl2 {
+    border-left: 6px solid white;
+    height: auto;
+    margin-right: 50px;
+ }
+
+
+  // TABLE
+
+  table, th, td {
+    border: 2px solid black;
+    font-size: 24px;
+    display: flexbox;
+    margin: auto;
+    // height: 70px;
+    // width: 1250px;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .button {
+    display: flex;
+    justify-content: right;
+    padding: 20px;
+  }
+  
+  .submit-button {
+    // background-color: rgb(75, 116, 218);
+    font-weight: bold;
+    color: black;
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    background: linear-gradient(to left, white 50%, rgb(75, 116, 218) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .9s ease-in-out;
+}
+
+.submit-button:hover {
+  background-position: left bottom;
+}
+
+
+.submit-button:hover {
+  color: white;  
+}
