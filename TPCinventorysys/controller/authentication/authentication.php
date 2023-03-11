@@ -28,9 +28,6 @@
             }
         }
         
-    }else {
-        // header('location:../../index.php');
-        echo "<script>alert('Invalid Password'); window.location.href='../../index.php';</script>";
     }
     $conn->close();
 ?>

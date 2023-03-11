@@ -20,6 +20,13 @@
   <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="assets/cssmine/span.css">
+
+  <style>
+    .error {
+    color: red;
+    }
+  </style>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -29,10 +36,10 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in</p>
-
-      <form action="./controller/authentication/authentication.php" method="post">
+      <div id="Msg"></div>
+      <form action="./controller/authentication/authentication.php" method="post" id="MyForm">
         <div class="input-group mb-3">
-          <input type="text" name="username" class="form-control" placeholder="Username" required>
+          <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -40,7 +47,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password" required>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -58,7 +65,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" id="btn" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -82,5 +89,7 @@
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
+
+<script src="./assets/jsmine/js/login.js"></script>
 </body>
 </html>

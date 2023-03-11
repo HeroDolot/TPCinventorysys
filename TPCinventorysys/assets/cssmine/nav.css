@@ -6,7 +6,6 @@
 }
 
 .navbar {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -64,10 +63,6 @@
 }
 
 .search-box::-moz-placeholder {
-  color: #a9a9a9;
-}
-
-.search-box:-ms-input-placeholder {
   color: #a9a9a9;
 }
 
