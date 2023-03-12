@@ -87,15 +87,9 @@ while ($row = mysqli_fetch_assoc($results)) {
                 </a>
               </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Receiving Report</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Purchase Report</p>
+              <a href="receiving.php" class="nav-link">
+                <i class="far fa fa-file nav-icon"></i>
+                <p>Receiving</p>
               </a>
             </li>
           </ul>
