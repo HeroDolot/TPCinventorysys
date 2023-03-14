@@ -6,6 +6,7 @@ include '../components/navbar.php';
 include '../components/sidebar.php';
 ?>
 
+
 <div class="container-fluid mt-3">
     <div class="content-wrapper">
         <div class="card-header text-xl text-primary mb-3">
@@ -21,7 +22,7 @@ include '../components/sidebar.php';
                         <hr>
                         <div class="font-weight-bold">
                             <p>Date:</p>
-                            <p>Pick-up or Reservation:</p>
+                            <p>Cash or Reservation:</p>
                             <p>Reference Number:</p>
                         </div>
                     </div>
@@ -53,8 +54,32 @@ include '../components/sidebar.php';
                     </table>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success btn-block">Approve</button>
-                        <button type="submit" class="btn btn-danger btn-block">Deny</button>
+
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal">Deny</button>
+
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">Deny Request</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to deny this request?</p>
+                                        <select name="" id="" class="form-control">
+                                            Reason of Denying
+                                            <option value="">Invalid Reference Number</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-danger">Deny</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -66,7 +91,7 @@ include '../components/sidebar.php';
                         <hr>
                         <div class="font-weight-bold">
                             <p>Date:</p>
-                            <p>Pick-up or Reservation:</p>
+                            <p>Cash or Reservation:</p>
                             <p>Reference Number:</p>
                         </div>
                     </div>
@@ -98,7 +123,30 @@ include '../components/sidebar.php';
                     </table>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-success btn-block">Approve</button>
-                            <button type="submit" class="btn btn-danger btn-block">Deny</button>
+
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal">Deny</button>
+
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myModalLabel">Deny Request</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to deny this request?</p>
+                                        <select name="" id="" class="form-control">
+                                            Reason of Denying
+                                            <option value="">Invalid Reference Number</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-danger">Deny</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
