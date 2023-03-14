@@ -40,7 +40,7 @@ include '../components/sidebar.php';
                     </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3"></td>
+                                <td colspan="4"></td>
                                 <td>Total: <span id="totalAmount">0.00</span></td>
                                 <td></td>
                             </tr>

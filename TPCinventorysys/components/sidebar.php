@@ -50,6 +50,12 @@ while ($row = mysqli_fetch_assoc($results)) {
             <p>Information<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
+          <li class="nav-item">
+              <a href="../pages/orders.php" class="nav-link">
+                <i class="far fa fas fas fa-cash-register nav-icon" aria-hidden="true"></i>
+                <p>Orders</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="../pages/customer.php" class="nav-link">
                 <i class="far fa fa-users nav-icon" aria-hidden="true"></i>
