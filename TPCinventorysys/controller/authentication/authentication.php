@@ -2,7 +2,7 @@
     include '../../connection.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $roles = $_POST['roles'];
+
     session_start();
 
     $sql = "SELECT * FROM users WHERE uname='$username'";

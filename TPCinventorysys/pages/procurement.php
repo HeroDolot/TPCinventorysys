@@ -44,7 +44,7 @@ $result = mysqli_query($conn, $sql);
             <div class="card-body">
                 <!-- <form> -->
                 <?php
-                    echo '<form action="../CRUD/procurement-insert.php" method="get">';
+                    echo '<form method="POST" name="procurement">';
                     echo '<div class="row" style="text-transform:uppercase;">';
                     echo '<div class="col-md-4 form-group">';
                     echo '<label for="supplier">Supplier</label>';
@@ -98,7 +98,7 @@ $result = mysqli_query($conn, $sql);
                     echo '<th>Action</th>';
                     echo '</tr>';
                     echo '</thead>';
-                    echo '<tbody id="itemsTableBody">';
+                    echo '<tbody>';
                     echo '</tbody>';
                     echo '<tfoot>';
                     echo '<tr>';
@@ -110,8 +110,8 @@ $result = mysqli_query($conn, $sql);
                     echo '</table>';
                     echo '<div class="row">';
                     echo '<div class="col-md-12 text-right">';
-                    echo '<button type="submit" class="btn btn-primary">Save</button>';
-                    echo '<button type="button" class="btn btn-secondary" id="clearTable">Clear</button>';
+                    echo '<button type="submit" class="btn btn-primary" name="save_procument" formaction="../CRUD/procurement-insert.php">Save</button>';
+                    echo '<button type="submit" class="btn btn-secondary" id="clearTable">Clear</button>';
                     echo '</div>';
                     echo '</div>';
                     echo '</form>';
