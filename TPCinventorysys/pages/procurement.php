@@ -28,93 +28,90 @@ $result = mysqli_query($conn, $sql);
                 <label for="date">DATE</label>
                 <input type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" />
             </div>
-            <div class="col-md-4 form-group">
-                <label for="code">Purchase Order Number</label>
-                <div class="input-group">
-                    <form action="../CRUD/po_insert.php" method="get">
-                    <div class="input-group-append">
-                        <input type="text" class="form-control" id="result" name="po_code">
-                            <button type="button" id="generateButton" class="btn btn-info">Generate</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-                </div>
-                <input type="hidden" id="lengthInput" value="7">
-            </div>
-            <div class="card-body">
                 <!-- <form> -->
                 <?php
-                    echo '<form method="POST" name="procurement">';
-                    echo '<div class="row" style="text-transform:uppercase;">';
-                    echo '<div class="col-md-4 form-group">';
-                    echo '<label for="supplier">Supplier</label>';
-                    echo '<select name="supplier_name" id="supplier_name" class="form-control" style="text-transform:uppercase;">';
+                echo '<form method="POST" name="procurement">
+                        <div class="col-md-4 form-group">
+                            <label for="code">Purchase Order Number</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <input type="text" class="form-control" id="result" name="po_code">
+                                    <button type="button" id="generateButton" class="btn btn-info">Generate</button>
+                                </div>
+                            </div>
+                                <input type="hidden" id="lengthInput" value="7">
+                        </div>
+                        <div class="card-body">
+                    <div class="row" style="text-transform:uppercase;">
+                    <div class="col-md-4 form-group">
+                    <label for="supplier">Supplier</label>
+                    <select name="supplier_name" id="supplier_name" class="form-control" style="text-transform:uppercase;">';
                     while ($row = $result->fetch_assoc()) {
                         echo '<option value="' . $row['supplier_name'] . '">' . $row['supplier_name'] . '</option>';
                     }
-                    echo '</select>';
-                    echo '</div>';
-                    echo '<div class="col-md-4 form-group">';
-                    echo '<label for="number_input">Contact Number</label>';
-                    echo '<select name="supplier_contact" id="supplier_contact" class="form-control">';
-                    echo '</select>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="row" style="text-transform:uppercase;">';
-                    echo '<div class="col-md-4 form-group">';
-                    echo '<label for="item_name">Item Name</label>';
-                    echo '<select name="item_name" id="product_type" class="form-control">';
-                    $results = mysqli_query($conn, $sql);
-                    while ($row = mysqli_fetch_assoc($results)) {
-                        echo '<option value="' . $row['item_name'] . '">' . $row['item_name'] . '</option>';
-                    }
-                    echo '</select>';
-                    echo '</div>';
-                    echo '<div class="col-md-2 form-group">';
-                    echo '<label for="quantity">Quantity</label>';
-                    echo '<input type="number" class="form-control" id="quantity" name="quantity">';
-                    echo '</div>';
-                    echo '<div class="col-md-2 form-group">';
-                    echo '<label for="unit_price">Unit Price</label>';
-                    echo '<input type="number" class="form-control" id="unit_price" name="unit_price" step="0.01">';
-                    echo '</div>';
-                    echo '<div class="col-md-2 form-group">';
-                    echo '<label for="total_price">Total Price</label>';
-                    echo '<input type="number" class="form-control" id="total_price" name="total_price" readonly>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="row">';
-                    echo '<div class="col-md-12 text-right">';
-                    echo '<button type="button" class="btn btn-info" onclick="addItem()">Add Item</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<table class="table m-2" id="procurementTable">';
-                    echo '<thead>';
-                    echo '<tr>';
-                    echo '<th>Name</th>';
-                    echo '<th>Quantity</th>';
-                    echo '<th>Price</th>';
-                    echo '<th id="subTotal">Subtotal</th>';
-                    echo '<th>Action</th>';
-                    echo '</tr>';
-                    echo '</thead>';
-                    echo '<tbody>';
-                    echo '</tbody>';
-                    echo '<tfoot>';
-                    echo '<tr>';
-                    echo '<td colspan="4"></td>';
-                    echo '<td>Total: <span id="totalAmount">0.00</span></td>';
-                    echo '<td></td>';
-                    echo '</tr>';
-                    echo '</tfoot>';
-                    echo '</table>';
-                    echo '<div class="row">';
-                    echo '<div class="col-md-12 text-right">';
-                    echo '<button type="submit" class="btn btn-primary" name="save_procument" formaction="../CRUD/procurement-insert.php">Save</button>';
-                    echo '<button type="submit" class="btn btn-secondary" id="clearTable">Clear</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</form>';
+                    echo '</select>
+                </div>
+                   <div class="col-md-4 form-group">
+                    <label for="number_input">Contact Number</label>
+                    <select name="supplier_contact" id="supplier_contact" class="form-control">
+                    </select>
+                    </div>
+                    </div>
+                   <div class="row" style="text-transform:uppercase;">
+                  <div class="col-md-4 form-group">
+                    <label for="item_name">Item Name</label>
+                    <select name="item_name" id="product_type" class="form-control">';
+                        $results = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_assoc($results)) {
+                            echo '<option value="' . $row['item_name'] . '">' . $row['item_name'] . '</option>';
+                        }
+                        echo '</select>
+                   </div>
+                   <div class="col-md-2 form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity">
+                   </div>
+                   <div class="col-md-2 form-group">
+                    <label for="unit_price">Unit Price</label>
+                    <input type="number" class="form-control" id="unit_price" name="unit_price" step="0.01">
+                   </div>
+                   <div class="col-md-2 form-group">
+                    <label for="total_price">Total Price</label>
+                    <input type="number" class="form-control" id="total_price" name="total_price" readonly>
+                   </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-info" onclick="addItem()">Add Item</button>
+                    </div>
+                   </div>
+                    <table class="table m-2" id="procurementTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th id="subTotal">Subtotal</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td>Total: <span id="totalAmount">0.00</span></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                   <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn btn-primary" name="save_procument" formaction="../CRUD/procurement-insert.php">Save</button>
+                        <button type="submit" class="btn btn-secondary" id="clearTable">Clear</button>
+                    </div>
+                   </div>
+                   </form>';
                     ?>
                 <!-- </form> -->
             </div>
