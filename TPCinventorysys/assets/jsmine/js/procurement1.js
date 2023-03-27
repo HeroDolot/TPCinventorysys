@@ -4,8 +4,7 @@ function generateCode() {
   document.getElementById("generateButton").addEventListener("click", function(){
     count++;
     var result = 'PO-' + count;
-    var result_string = result.toString();
-    document.getElementById("result_string").value = result;
+    document.getElementById("result").value = result;
   });
 }
 

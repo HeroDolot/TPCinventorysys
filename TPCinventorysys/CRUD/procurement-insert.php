@@ -30,10 +30,10 @@ include '../connection.php';
         $quantity = mysqli_real_escape_string($conn, $merge['quantity'][$i]);
         $unit_price = mysqli_real_escape_string($conn, $merge['unit_price'][$i]);
         $total_price = mysqli_real_escape_string($conn, $merge['total_price'][$i]);
-        $sql = "INSERT INTO procurement (item, quantity, unit_price, total_price, po_code) VALUES ('$item', '$quantity', '$unit_price', '$total_price', '$po_code')";
+        $sql = "INSERT INTO procurement (item, quantity, unit_price, total_price, po_code) VALUES ('$item', '$quantity', '$unit_price', '$total_price', '$po_code');";
+        mysqli_query($conn, $sql);
     }
-
-    if (mysqli_query($conn, $sql)) {
+    if ($sql != "") {
         echo "Procurement data saved successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
