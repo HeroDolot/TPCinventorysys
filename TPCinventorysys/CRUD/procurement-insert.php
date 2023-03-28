@@ -8,6 +8,8 @@ include '../connection.php';
     $price = $_POST['price'];
     $subtotal = $_POST['subtotal'];
     $po_code = $_POST['po_code'];
+    $supplier_name = $_POST['supplier_name'];
+    $supplier_contact = $_POST['supplier_contact'];
 
     $merge = array(
         "item" => $name,
@@ -30,7 +32,7 @@ include '../connection.php';
         $quantity = mysqli_real_escape_string($conn, $merge['quantity'][$i]);
         $unit_price = mysqli_real_escape_string($conn, $merge['unit_price'][$i]);
         $total_price = mysqli_real_escape_string($conn, $merge['total_price'][$i]);
-        $sql = "INSERT INTO procurement (item, quantity, unit_price, total_price, po_code) VALUES ('$item', '$quantity', '$unit_price', '$total_price', '$po_code');";
+        $sql = "INSERT INTO procurement (supplier_name, supplier_contact, item, quantity, unit_price, total_price, po_code) VALUES ('$supplier_name','$supplier_contact','$item', '$quantity', '$unit_price', '$total_price', '$po_code');";
         mysqli_query($conn, $sql);
     }
     if ($sql != "") {
