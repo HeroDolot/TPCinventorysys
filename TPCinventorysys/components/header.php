@@ -18,10 +18,11 @@
   
   <link rel="stylesheet" href="../assets/plugins/bootstrap/js/bootstrap.min.js">
 
+<!--    chart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/355b676a18.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

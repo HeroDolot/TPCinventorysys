@@ -110,7 +110,7 @@ function addItem() {
 // $("#quantity").val("");
 // $("#unit_price").val("");
 // $("#total_price").val("");
-    // var name = $("#product_type").val();
+//     var name = $("#product_type").val();
 // var quantity = $("#quantity").val();
 // var price = $("#unit_price").val();
 // var subtotal = quantity * price;

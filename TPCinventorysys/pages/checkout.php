@@ -2,7 +2,7 @@
     session_start();
     include '../connection.php';
     include '../components/header.php';
-?>
+    ?>
 <style>
     body {
         background-color: black;
@@ -47,24 +47,18 @@
     <img src="../assets/images/gcash.jpeg" alt="" class="img">
 </div>
 
-<form action="" method="get">
+<form action="../CRUD/delivery.php" method="get">
     <div class="form-group refNumber">
-        <input type="text" name="" placeholder="Reference Number" required>
+        <input type="text" name="full_name" placeholder="Full Name" required>
     </div>
 
     <div class="form-group refNumber">
-        <input type="text" name="" id="" placeholder="Full Name" required>
-    </div>
-
-    <div class="form-group refNumber">
-        <input type="number" name="" id="" placeholder="Contact Number" required>
+        <input type="number" name="contact_no" placeholder="Contact Number" required>
     </div>
 
     <div class="p-1 buttons">
-        <button type="submit" class="btn btn-success">Pick Up</button>
-        <button type="submit" class="btn btn-primary">Reservation</button>
+        <button type="submit" name="delivery_type_pickup" class="btn btn-success" data-toggle="modal" data-target="#successModal">Pick Up</button>
+        <button type="submit" name="delivery_type_cash_delivery" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Cash Delivery</button>
         <a href="./cart.php" class="btn btn-danger">Back</a>
     </div>
 </form>
-
-
