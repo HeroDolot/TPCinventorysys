@@ -5,7 +5,7 @@ include '../connection.php';
 include '../components/header.php';
 include '../components/navbar.php';
 include '../components/sidebar.php';
-$sql = "SELECT * FROM procurement ";
+$sql = "SELECT DISTINCT po_code FROM procurement";
 $result = mysqli_query($conn, $sql);
 $result_table = mysqli_query($conn, $sql);
 $total = 0.00;
@@ -23,7 +23,7 @@ $po_number = "";
                     <select name="po_number" id="po_number" class="form-control">
                         <option value=""></option>
                         <?php while ($row = $result->fetch_assoc()) : ?>
-                            <option value="<?php echo $row['po_code']; ?>"><?php echo $row['po_code']; ?></option>
+                            <option value="<?php echo $row['po_code']; ?>" <?php if ($row['po_code'] == $po_number) echo "selected"; ?>><?php echo $row['po_code']; ?></option>
                         <?php endwhile; ?>
                     </select>
                 </label>
