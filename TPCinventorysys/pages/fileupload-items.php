@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include '../connection.php';
 include '../components/header.php';
 include '../components/navbar.php';
@@ -13,7 +14,7 @@ include '../components/sidebar.php';
             <form action="../controller/authentication/file-upload-items-con.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="foldername">Folder Name:</label>
-                    <select name="foldername" id="foldername" class="form-control" required>
+                    <select name="foldername" id="foldername" class="form-control-file" required>
                         <option>AddItem</option>
                     <select>
                 </div>

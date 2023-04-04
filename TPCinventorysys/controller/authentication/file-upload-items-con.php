@@ -39,8 +39,8 @@ if($temp_file != "") {
     $newfilepath = date("YmdHis") . "." . $ext;
     
     if(move_uploaded_file($temp_file, $path ."/". $newfilepath)){
-        $sql = "INSERT INTO lists (foldername, product_code ,names, ext, category, ptype,brand, price, quantity,label, descriptions) VALUES ('$foldername', '$product_code','$newfilepath', '$ext'
-        , '$category', '$ptype', '$brand', '$price','$quantity', '$label', '$descriptions')";
+        $sql = "INSERT INTO lists (foldername, product_code ,names, ext, category, ptype, brand, price, quantity,label, descriptions) 
+        VALUES ('$foldername', '$product_code','$newfilepath', '$ext' , '$category', '$ptype', '$brand', '$price','$quantity', '$label', '$descriptions')";
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         if (mysqli_query($conn, $sql)) {
             echo $alert;

@@ -4,7 +4,7 @@
     include '../components/navbar-unlog.php';
     include '../components/sidebar-unlog.php';
     
-    $sql = "SELECT brands.brand_name AS brand_name, lists.names, lists.ptype, lists.label, lists.quantity, lists.price, lists.id FROM lists INNER JOIN brands ON lists.brand_id = brands.brand_id";
+    $sql = "SELECT brands.brand_name AS brand_name, lists.names, lists.descriptions ,lists.ptype, lists.label, lists.quantity, lists.price, lists.id FROM lists INNER JOIN brands ON lists.brand_id = brands.brand_id";
     $result = mysqli_query($conn, $sql);
 ?>
 
