@@ -86,54 +86,28 @@ $(document).ready(function() {
     })
 })
 
+
 function addItem() {
-// Get the values from the form fields
-// var name = $("#product_type").val();
-// var quantity = $("#quantity").val();
-// var price = $("#unit_price").val();
-// var subtotal = quantity * price;
-//
-// // Append the new row to the table
-// $("#itemsTableBody").append(
-// "<tr>" +
-// "<td>" + name + "</td>" +
-// "<td>" + quantity + "</td>" +
-// "<td>" + price + "</td>" +
-// "<td>" + subtotal + "</td>" +
-// "<td><button type='button' class='btn btn-danger' onclick='removeItem(this)'>Remove</button></td>" +
-// "</tr>"
-// );
-//
-// // Clear the form fields
-// $("#product_type").val("");
-// $("#item_code").val("");
-// $("#quantity").val("");
-// $("#unit_price").val("");
-// $("#total_price").val("");
-//     var name = $("#product_type").val();
-// var quantity = $("#quantity").val();
-// var price = $("#unit_price").val();
-// var subtotal = quantity * price;
-var name = document.procurement.product_type.value;
-var quantity = document.procurement.quantity.value;
-var price = document.procurement.unit_price.value;
-var subtotal = quantity * price;
+    var name = document.procurement.product_type.value;
+    var quantity = document.procurement.quantity.value;
+    var price = document.procurement.unit_price.value;
+    var subtotal = quantity * price;
+    var total = 0;
+    total += subtotal;
 
-var tr = document.createElement('tr');
-var td1 = tr.appendChild(document.createElement('td'));
-var td2 = tr.appendChild(document.createElement('td'));
-var td3 = tr.appendChild(document.createElement('td'));
-var td4 = tr.appendChild(document.createElement('td'));
-var td5 = tr.appendChild(document.createElement('td'));
+    var tr = document.createElement('tr');
+    var td1 = tr.appendChild(document.createElement('td'));
+    var td2 = tr.appendChild(document.createElement('td'));
+    var td3 = tr.appendChild(document.createElement('td'));
+    var td4 = tr.appendChild(document.createElement('td'));
+    var td5 = tr.appendChild(document.createElement('td'));
 
-td1.innerHTML='<input type="hidden" name="name[]" value="'+name+'">'+name;
-td2.innerHTML='<input type="hidden" name="quantity[]" value="'+quantity+'">'+quantity;
-td3.innerHTML='<input type="hidden" name="price[]" value="'+price+'">'+price;
-td4.innerHTML='<input type="hidden" name="subtotal[]" value="'+subtotal+'">'+subtotal;
-td5.innerHTML='<button type="button" class="btn btn-danger" onclick="removeItem(this)">Remove</button></td>';
-document.getElementById("procurementTable").appendChild(tr);
-
-
+    td1.innerHTML = '<input type="hidden" name="name[]" value="' + name + '">' + name;
+    td2.innerHTML = '<input type="hidden" name="quantity[]" value="' + quantity + '">' + quantity;
+    td3.innerHTML = '<input type="hidden" name="price[]" value="' + price + '">' + price;
+    td4.innerHTML = '<input type="hidden" name="subtotal[]" value="' + subtotal + '">' + subtotal;
+    td5.innerHTML = '<button type="button" class="btn btn-danger" onclick="removeItem(this)">Remove</button></td>';
+    document.getElementById("procurementTable").appendChild(tr);
 }
 
 // Update the total amount

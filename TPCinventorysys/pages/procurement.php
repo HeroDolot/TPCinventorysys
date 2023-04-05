@@ -82,7 +82,7 @@ $result = mysqli_query($conn, $sql);
                   </div>
                   <div class="row">
                     <div class="col-md-12 text-right">
-                        <button type="button" class="btn btn-info" onclick="addItem()">Add Item</button>
+                        <button type="button" class="btn btn-info" id="generateTotal" onclick="addItem()">Add Item</button>
                     </div>
                    </div>
                     <table class="table m-2" id="procurementTable">
@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $sql);
                         <tfoot>
                             <tr>
                                 <td colspan="4"></td>
-                                <td>Total: <span id="totalAmount">0.00</span></td>
+                                <td>Total: <span id="totalAmount"></span></td>
                                 <td></td>
                             </tr>
                         </tfoot>
