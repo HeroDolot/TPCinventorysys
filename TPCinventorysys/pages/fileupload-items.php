@@ -53,6 +53,7 @@ include '../components/sidebar.php';
                     </select>
                 </div>
 
+                
                 <div class="form-group">
                     <label for="brand">Brand:</label>
                     <select name="brand" id="brand" required>
@@ -62,7 +63,7 @@ include '../components/sidebar.php';
                         $result = mysqli_query($conn,$sql);
 
                         while($row = mysqli_fetch_assoc($result)) {
-                            echo '<option value='.$row["brand_name"].'>'.$row["brand_name"].'</options>';
+                            echo '<option value='.$row["brand_id"].'>'.$row["brand_name"].'</options>';
                         }
                     ?>
                     </select>

@@ -7,12 +7,11 @@ $product_code = $_POST['product_code'];
 $upload = $_FILES['upload']['name'];
 $category = $_POST['category'];
 $ptype = $_POST['ptype'];
-$brand = $_POST['brand'];
+$brand_id = $_POST['brand'];
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
 $label = $_POST['label'];
 $descriptions = $_POST['descriptions'];
-
 function get_size($size){
     $kb_size = $size / 1024;
     $format_size = number_format($kb_size, 2) . 'KB';
@@ -39,8 +38,9 @@ if($temp_file != "") {
     $newfilepath = date("YmdHis") . "." . $ext;
     
     if(move_uploaded_file($temp_file, $path ."/". $newfilepath)){
-        $sql = "INSERT INTO lists (foldername, product_code ,names, ext, category, ptype, brand, price, quantity,label, descriptions) 
-        VALUES ('$foldername', '$product_code','$newfilepath', '$ext' , '$category', '$ptype', '$brand', '$price','$quantity', '$label', '$descriptions')";
+        $sql = "INSERT INTO lists (foldername, product_code ,names, ext, category, ptype,brand_id, price, quantity,label, descriptions)
+         VALUES ('$foldername', '$product_code','$newfilepath', '$ext'
+        , '$category', '$ptype', '$brand_id', '$price','$quantity', '$label', '$descriptions')";
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         if (mysqli_query($conn, $sql)) {
             echo $alert;

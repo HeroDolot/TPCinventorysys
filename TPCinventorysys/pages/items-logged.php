@@ -8,87 +8,82 @@
 
     $sql = "SELECT brands.brand_name AS brand_name, lists.names, lists.descriptions, lists.ptype, lists.label, lists.quantity, lists.price, lists.id FROM lists INNER JOIN brands ON lists.brand_id = brands.brand_id";
     $result = mysqli_query($conn, $sql);
-    // $row = mysqli_fetch_assoc($result);
-    // var_dump($row);
 ?>
-<!-- <form action="" method="post"> -->
+
     <div class="container-fluid">
         <div class="content-wrapper p-5">
             <div class="row">
-            <?php
-            $i = 0;
-            while($row = mysqli_fetch_assoc($result)){
-                echo ' <div class="col-md-4">';
-                echo '     <div class="card" style="width: 100%;">';
-                echo '         <img src="../assets/images/AddItem' . "/" . $row['names'] . '" class="card-img-top" alt="...">';
-                echo '         <div class="card-body">';
-                echo '             <h2 class="card-title font-weight-bolder">Type: ' . $row['ptype'] . '</h5>';
-                echo '             <br>';
-                echo '             <h2 class="card-title">Brand: ' . $row['brand_name'] . '</h5>';
-                echo '             <br>';
-                echo '             <h3 class="card-title">Model: ' . $row['label'] . '</h5>';
-                echo '             <br>';
-                echo '             <h3 class="card-title">Quantity: ' . $row['quantity'] . '</h3>';
-                echo '             <br>';
-                echo '             <h3 class="card-title">Price: ' . '₱' . number_format($row['price']) . '</h3>';
-                // echo '             <p class="card-text">About: ' . $row['descriptions'] . '</p>';
-                echo '             <br>';   
-                echo '             <br>';   
-                echo '             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal' . $row['id'] . '">About</button>';
-                echo '             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addToCartModal' . $row['id'] . '">Add To Cart</button>';
-                echo '         </div>';
-                echo '     </div>';
-                echo ' </div>';
-                
-                echo ' <div class="modal fade" id="myModal' . $row['id'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-                echo '     <div class="modal-dialog" role="document">';
-                echo '         <div class="modal-content">';
-                echo '             <div class="modal-header">';
-                echo '                 <h4 class="modal-title" id="myModalLabel">Product Description</h4>';
-                echo '                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                echo '                     <span aria-hidden="true">&times;</span>';
-                echo '                 </button>';
-                echo '             </div>';
-                echo '             <div class="modal-body">';
-                echo '                <img src="../assets/images/AddItem' . "/" . $row['names'] . '" class="card-img-top" alt="...">';
-                echo '                <h5>'. $row['descriptions'] . '</h5>';
-                echo '             </div>';
-                echo '             <div class="modal-footer">';
-                echo '                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>';
-                echo '             </div>';
-                echo '         </div>';
-                echo '     </div>';
-                echo ' </div>';
-                
-                echo ' <div class="modal fade" id="addToCartModal' . $row['id'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-                echo '     <div class="modal-dialog" role="document">';
-                echo '         <div class="modal-content">';
-                echo '             <div class="modal-header">';
-                echo '                 <h4 class="modal-title" id="myModalLabel">Add to Cart</h4>';
-                echo '                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                echo '                     <span aria-hidden="true">&times;</span>';
-                echo '                 </button>';
-                echo '             </div>';
-                echo '             <div class="modal-body">';
-                echo '                 <form method="get" action="../controller/authentication/cart-view.php">';
-                echo '                     <input type="hidden" name="lists_id" value="' . $row['id'] . '">';
-                echo '                      <div class="form-group">';
-                echo '                          <label for="cart_quantity">Quantity</label>';
-                echo '                          <input type="number" class="form-control" id="quantity" name="cart_quantity" min="1" max="' . $row['quantity'] . '">';
-                echo '                      </div>';                
-                echo '                     <button type="submit" class="btn btn-outline-primary">Add to Cart</button>';
-                echo '                 </form>';
-                echo '             </div>';
-                echo '             <div class="modal-footer">';
-                echo '                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>';
-                echo '             </div>';
-                echo '         </div>';
-                echo '     </div>';
-                echo ' </div>';
+            <?php $i = 0; ?>
 
-
-            }
-            ?>
+            <?php while ($row = $result->fetch_assoc()) :  ?>
+                <div class="col-md-4">
+                <div class="card" style="width: 100%;">
+                   <img src="../assets/images/AddItem/<?php echo $row['names']; ?>" class="card-img-top" alt="...">
+                      <div class="card-body">
+                             <h2 class="card-title font-weight-bolder">Type: <?php  echo $row['ptype']; ?></h5>
+                             <br>
+                             <h2 class="card-title">Brand: <?php echo  $row['brand_name']; ?></h5>
+                             <br>
+                             <h3 class="card-title">Model: <?php echo $row['label']; ?></h5>
+                             <br>
+                             <h3 class="card-title">Quantity: <?php echo $row['quantity']; ?> </h3>
+                             <br>
+                             <h3 class="card-title">Price: <?php echo number_format($row['price']); ?></h3>
+                            <p class="card-text">About: <?php echo $row['descriptions']; ?> </p>
+                             <br>   
+                             <br>   
+                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal<?php echo $row['id']; ?>">About</button>
+                             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addToCartModal<?php echo $row['id']; ?>">Add To Cart</button>
+                         </div>
+                     </div>
+                 </div>
+                
+                 <div class="modal fade" id="myModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h4 class="modal-title" id="myModalLabel">Product Description</h4>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </div>
+                             <div class="modal-body">';
+                                <img src="../assets/images/AddItem<?php echo $row['names']; ?>" class="card-img-top" alt="...">
+                                <h5><?php echo $row['descriptions']; ?></h5>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                
+                 <div class="modal fade" id="addToCartModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h4 class="modal-title" id="myModalLabel">Add to Cart</h4>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </div>
+                             <div class="modal-body">
+                                 <form method="get" action="../controller/authentication/cart-view.php">
+                                     <input type="hidden" name="lists_id" value="<?php echo $row['id']; ?>">
+                                      <div class="form-group">
+                                          <label for="cart_quantity">Quantity</label>
+                                          <input type="number" class="form-control" id="quantity" name="cart_quantity" min="1" max="<?php echo $row['quantity']; ?>">
+                                      </div>                
+                                     <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
+                                 </form>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </div>
