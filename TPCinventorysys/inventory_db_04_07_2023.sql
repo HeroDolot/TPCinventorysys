@@ -153,7 +153,7 @@ CREATE TABLE `lists` (
   `label` varchar(255) NOT NULL,
   `descriptions` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `lists` */
 
@@ -165,7 +165,8 @@ insert  into `lists`(`id`,`foldername`,`product_code`,`names`,`ext`,`category`,`
 (25,'AddItem','CN12LK','20230218084259.jpg','jpg','Motherboard','Brand New',2,10000,15,'awit','1231231312312adawhdakwhdlkawhdkahwdkajwh'),
 (26,'AddItem','H230AC','20230227094621.png','png','Monitor','Brand New',4,50000,200,'YouTube','Pa Nga!'),
 (28,'AddItem','PKLZNA12','20230304024213.png','png','HDD','Surplus',4,2000,5,'HDD 1TB','DELL NAMBAWAN'),
-(29,'AddItem','22','20230405151308.jpg','jpg','Motherboard','Brand New',0,2222,22,'fdsf','fsdfs');
+(29,'AddItem','22','20230405151308.jpg','jpg','Motherboard','Brand New',0,2222,22,'fdsf','fsdfs'),
+(30,'AddItem','22','20230407083734.jpg','jpg','HDD','Brand New',0,2222,233,'Sample Hdd','Sample Description of Hdd');
 
 /*Table structure for table `orders` */
 
@@ -176,7 +177,7 @@ CREATE TABLE `orders` (
   `fullname` varchar(255) NOT NULL,
   `contact_no` int(255) NOT NULL,
   `delivery_type` int(1) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 0,
+  `status` int(10) NOT NULL DEFAULT 0,
   `date_now` datetime NOT NULL,
   `brand_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
