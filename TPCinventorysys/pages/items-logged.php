@@ -47,8 +47,8 @@
                                      <span aria-hidden="true">&times;</span>
                                  </button>
                              </div>
-                             <div class="modal-body">';
-                                <img src="../assets/images/AddItem<?php echo $row['names']; ?>" class="card-img-top" alt="...">
+                             <div class="modal-body">
+                                <img src="../assets/images/AddItem/<?php echo $row['names']; ?>" class="card-img-top" alt="...">
                                 <h5><?php echo $row['descriptions']; ?></h5>
                              </div>
                              <div class="modal-footer">
