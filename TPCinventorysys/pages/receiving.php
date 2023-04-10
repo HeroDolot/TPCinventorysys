@@ -7,7 +7,8 @@ include '../components/navbar.php';
 include '../components/sidebar.php';
 $sql = "SELECT DISTINCT po_code FROM procurement";
 $result = mysqli_query($conn, $sql);
-$result_table = mysqli_query($conn, $sql);
+$sql_filter_all = "SELECT * FROM procurement";
+$result_table = mysqli_query($conn, $sql_filter_all);
 $total = 0.00;
 $po_number = "";
 ?>

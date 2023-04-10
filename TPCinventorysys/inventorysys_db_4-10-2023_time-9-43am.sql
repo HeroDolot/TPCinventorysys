@@ -88,7 +88,7 @@ CREATE TABLE `cart` (
   `lists_id` varchar(255) NOT NULL,
   `cart_quantity` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `cart` */
 
@@ -101,7 +101,8 @@ insert  into `cart`(`id`,`userid`,`lists_id`,`cart_quantity`) values
 (88,'3','23','4'),
 (89,'3','24','2'),
 (90,'3','28','3'),
-(91,'3','21','4');
+(91,'3','21','4'),
+(92,'2','21','2');
 
 /*Table structure for table `categories` */
 
@@ -155,7 +156,7 @@ CREATE TABLE `lists` (
   `label` varchar(255) NOT NULL,
   `descriptions` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `lists` */
 
@@ -168,7 +169,9 @@ insert  into `lists`(`id`,`foldername`,`product_code`,`names`,`ext`,`category`,`
 (26,'AddItem','H230AC','20230227094621.png','png','Monitor','Brand New',4,50000,200,'YouTube','Pa Nga!'),
 (28,'AddItem','PKLZNA12','20230304024213.png','png','HDD','Surplus',4,2000,5,'HDD 1TB','DELL NAMBAWAN'),
 (29,'AddItem','22','20230405151308.jpg','jpg','Motherboard','Brand New',0,2222,22,'fdsf','fsdfs'),
-(30,'AddItem','22','20230407083734.jpg','jpg','HDD','Brand New',0,2222,233,'Sample Hdd','Sample Description of Hdd');
+(30,'AddItem','22','20230407083734.jpg','jpg','HDD','Brand New',0,2222,233,'Sample Hdd','Sample Description of Hdd'),
+(31,'AddItem','213','20230407132521.jpg','jpg','HDD','Brand New',1,2222,23,'Sample MotherBoard Label','Sample Description of Hdd'),
+(32,'AddItem','dsd','20230409233239.jpg','jpg','Motherboard','Brand New',1,2222,22,'Sample MotherBoard Label','Sample MotherBoard Description');
 
 /*Table structure for table `orders` */
 
@@ -181,27 +184,30 @@ CREATE TABLE `orders` (
   `delivery_type` int(1) NOT NULL,
   `status` int(10) NOT NULL DEFAULT 0,
   `date_now` datetime NOT NULL,
+  `ref_no` varchar(255) DEFAULT NULL,
   `brand_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
   `list_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `orders` */
 
-insert  into `orders`(`id`,`fullname`,`contact_no`,`delivery_type`,`status`,`date_now`,`brand_id`,`user_id`,`cart_id`,`list_id`) values 
-(26,'Allan Condiman',432426565,1,0,'2023-03-29 23:47:53',3,3,88,23),
-(27,'Allan Condiman',432426565,1,1,'2023-03-29 23:47:53',3,3,89,24),
-(28,'Allan Condiman',432426565,1,1,'2023-03-29 23:47:53',4,3,90,28),
-(29,'Allan Condiman',965566777,1,0,'2023-03-29 23:51:16',3,3,88,23),
-(30,'Allan Condiman',965566777,1,0,'2023-03-29 23:51:16',3,3,89,24),
-(31,'Allan Condiman',965566777,1,1,'2023-03-29 23:51:16',4,3,90,28),
-(32,'Allan Condiman',965566777,1,1,'2023-03-29 23:51:16',1,3,91,21),
-(33,'Allan Condiman',965566777,2,0,'2023-03-29 23:52:29',3,3,88,23),
-(34,'Allan Condiman',965566777,2,1,'2023-03-29 23:52:29',3,3,89,24),
-(35,'Allan Condiman',965566777,2,0,'2023-03-29 23:52:29',4,3,90,28),
-(36,'Allan Condiman',965566777,2,1,'2023-03-29 23:52:29',1,3,91,21);
+insert  into `orders`(`id`,`fullname`,`contact_no`,`delivery_type`,`status`,`date_now`,`ref_no`,`brand_id`,`user_id`,`cart_id`,`list_id`) values 
+(26,'Allan Condiman',432426565,1,2,'2023-03-29 23:47:53','fX7p0gUYGir4',3,3,88,23),
+(27,'Allan Condiman',432426565,1,1,'2023-03-29 23:47:53','7wEwk5h7RnDo',3,3,89,24),
+(28,'Allan Condiman',432426565,1,1,'2023-03-29 23:47:53','A3ckU9B2nr3O',4,3,90,28),
+(29,'Allan Condiman',965566777,1,0,'2023-03-29 23:51:16','sxnDmq8xtN27',3,3,88,23),
+(30,'Allan Condiman',965566777,1,0,'2023-03-29 23:51:16','O3enH3R5IgO6',3,3,89,24),
+(31,'Allan Condiman',965566777,1,1,'2023-03-29 23:51:16','1iBYqka1il2s',4,3,90,28),
+(32,'Allan Condiman',965566777,1,1,'2023-03-29 23:51:16','HSPjkFSUDxEs',1,3,91,21),
+(33,'Allan Condiman',965566777,2,0,'2023-03-29 23:52:29','zIoBMxQaS1LM',3,3,88,23),
+(34,'Allan Condiman',965566777,2,1,'2023-03-29 23:52:29','ThtIVoGZVuyv',3,3,89,24),
+(35,'Allan Condiman',965566777,2,0,'2023-03-29 23:52:29','T89NJtoehIWW',4,3,90,28),
+(36,'Allan Condiman',965566777,2,1,'2023-03-29 23:52:29','aT8U2OCn1RsM',1,3,91,21),
+(37,'Allan Condiman',2147483647,1,0,'2023-04-09 23:08:58','Mb34OKy93EXt',1,2,92,21),
+(40,'Allan Condiman',2147483647,1,0,'2023-04-09 23:23:15','aPObzcKp7fYd',1,2,92,21);
 
 /*Table structure for table `procurement` */
 

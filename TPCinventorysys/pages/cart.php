@@ -48,6 +48,9 @@ echo '<section class="content">
                         <li class="nav-item">
                             <a class="nav-link" href="receive.php" data-target="receive">Received</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="deny.php" data-target="receive">Deny</a>
+                        </li>
                         </ul>
                        </div>
                         </nav>

@@ -1,10 +1,12 @@
 <?php
 session_start();
-$order_id = $_POST['orderId'];
-//echo $order_id;
+$status = $_POST['status'];
+$ref_no = $_POST['ref_no'];
+$approve_or_deny = $status == 1 ? '1' : '2';
+
 include '../connection.php';
 
-$sql = "UPDATE orders set STATUS = 1 WHERE id=".$order_id."";
+$sql = "UPDATE orders set STATUS = '$approve_or_deny' WHERE ref_no='$ref_no'";
 mysqli_query($conn, $sql);
 
 if ($sql != "") {

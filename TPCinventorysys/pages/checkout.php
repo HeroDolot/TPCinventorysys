@@ -48,6 +48,7 @@
 </div>
 
 <form action="../CRUD/delivery.php" method="get">
+
     <div class="form-group refNumber">
         <input type="text" name="full_name" placeholder="Full Name" required>
     </div>

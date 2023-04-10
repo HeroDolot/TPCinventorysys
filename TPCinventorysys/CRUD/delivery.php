@@ -6,6 +6,12 @@ $delivery_pickup = isset($_GET['delivery_type_pickup']) ? '1' : '0';
 $delivery_cash_delivery = isset($_GET['delivery_type_cash_delivery']) ? '2' : '0';
 $date = date('Y-m-d H:i:s');
 $fullname = $_GET['full_name'];
+$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$ref_no = '';
+for ($i = 0; $i < 12; $i++) {
+    $ref_no .= $characters[rand(0, strlen($characters) - 1)];
+}
+
 include '../connection.php';
 
 $insert_sql_orders = " ";
@@ -20,11 +26,11 @@ while ($row = $result->fetch_assoc()) {
     $list_id = $row['lists_id'];
     $brand_id = $row['brand_id'];
     if ($delivery_pickup == 1) {
-        $insert_sql_orders = "INSERT INTO orders (fullname, contact_no, delivery_type, date_now, brand_id, user_id, cart_id, list_id) 
-                              VALUES ('$fullname','$contact_number','$delivery_pickup','$date','$brand_id','$userid','$cart_id','$list_id');";
+        $insert_sql_orders = "INSERT INTO orders (fullname, contact_no, delivery_type, date_now, ref_no, brand_id, user_id, cart_id, list_id)
+                              VALUES ('$fullname','$contact_number','$delivery_pickup','$date', '$ref_no', '$brand_id','$userid','$cart_id','$list_id');";
         mysqli_query($conn, $insert_sql_orders);
     } elseif ($delivery_cash_delivery == 2) {
-        $insert_sql_orders = "INSERT INTO orders (fullname, contact_no, delivery_type, date_now, brand_id, user_id, cart_id, list_id) 
+        $insert_sql_orders = "INSERT INTO orders (fullname, contact_no, delivery_type, date_now, brand_id, user_id, cart_id, list_id)
                               VALUES ('$fullname','$contact_number','$delivery_cash_delivery','$date','$brand_id','$userid','$cart_id','$list_id');";
         mysqli_query($conn, $insert_sql_orders);
     }else{

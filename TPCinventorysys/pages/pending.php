@@ -46,6 +46,9 @@ $result = mysqli_query($conn, $sql);
                                         <li class="nav-item">
                                             <a class="nav-link" href="receive.php" data-target="receive">Received</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="deny.php" data-target="receive">Deny</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>
@@ -64,7 +67,7 @@ $result = mysqli_query($conn, $sql);
                                     <th>SUBTOTAL</th>
                                 </tr>
                                 </thead>
-                                <tbody>';
+                                <tbody>
                                 <?php while ($row = $result->fetch_assoc()) :
                                 $subtotal = intval($row['cart_quantity']) * floatval($row['price']);
                                 $total += $subtotal;

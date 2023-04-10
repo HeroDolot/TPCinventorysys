@@ -12,7 +12,7 @@ $sql= "SELECT order_user.fullname, order_user.contact_no, order_user.delivery_ty
        ls.product_code, ls.ptype, ls.label FROM orders order_user LEFT JOIN users us 
        ON order_user.user_id = us.id LEFT JOIN lists ls ON order_user.list_id = ls.id 
        LEFT JOIN cart ca ON ca.id = order_user.cart_id LEFT JOIN brands br ON 
-        br.brand_id = order_user.brand_id WHERE STATUS = 1 AND us.id = '$userid'";
+        br.brand_id = order_user.brand_id WHERE STATUS = 2 AND us.id = '$userid'";
 $result = mysqli_query($conn, $sql);
 ?>
 

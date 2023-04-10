@@ -7,48 +7,8 @@
   include "../components/sidebar.php";
   include "../components/navbar.php";
   include '../connection.php';
-
-$sql = "SELECT * FROM orders order_user INNER JOIN lists ls ON order_user.list_id = ls.id WHERE order_user.status = 1 ORDER BY date_now ASC";
-$result = mysqli_query($conn, $sql);
-
-$dates = [];
-$sales = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $dates[] = $row['date_now'];
-    $sales[] = $row['price'];
-}
-
-$jsDates = array_map(function($date) {
-    return date("Y-m-d H:i:s", strtotime($date));
-}, $dates);
-$json_data_date = json_encode($dates);
-$json_data_sales = json_encode($sales);
-
-echo '<script>
-     var data_dates = ' . $json_data_date . ';
-     var data_sales = ' . $json_data_sales . ';
-     new Chart("myChart", {
-     type: "line",
-        data: {
-        labels: data_dates,
-            datasets: [{
-      fill: false,
-      lineTension: 0,
-      backgroundColor: "rgba(0,0,255,1.0)",
-      borderColor: "rgba(0,0,255,0.1)",
-      data: data_sales
-    }]
-  },
-  options: {
-    legend: {display: false},
-    scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
-    }
-  }
-});
-      </script>'
 ?>
+
 <div class="content-wrapper">
   <div class="content">
     <div class="content-header">
@@ -99,43 +59,9 @@ echo '<script>
         <div class="col-lg-8">
           <div class="card">
             <div class="card-header border-0">
-                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-                <!--              <div class="d-flex justify-content-between">-->
-<!--                <h3 class="card-title">Sales</h3>-->
-<!--                <a href="javascript:void(0);">View Report</a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--              <div class="d-flex">-->
-<!--                <p class="d-flex flex-column">-->
-<!--                  <span class="text-bold text-lg">₱18,230.00</span>-->
-<!--                  <span>Sales Over Time</span>-->
-<!--                </p>-->
-<!--                <p class="ml-auto d-flex flex-column text-right">-->
-<!--                  <span class="text-success">-->
-<!--                    <i class="fas fa-arrow-up"></i> 33.1%-->
-<!--                  </span>-->
-<!--                  <span class="text-muted">Since last month</span>-->
-<!--                </p>-->
-<!--              </div>-->
-              <!-- /.d-flex -->
-<!---->
-<!--              <div class="position-relative mb-4">-->
-<!--                <canvas id="sales-chart" height="200"></canvas>-->
-<!--              </div>-->
-<!---->
-<!--              <div class="d-flex flex-row justify-content-end">-->
-<!--                <span class="mr-2">-->
-<!--                  <i class="fas fa-square text-primary"></i> This year-->
-<!--                </span>-->
-<!---->
-<!--                <span>-->
-<!--                  <i class="fas fa-square text-gray"></i> Last year-->
-<!--                </span>-->
-<!--              </div>-->
+                <div id="chart_div" style="width: 900px; height: 500px;"></div>
             </div>
           </div>
-          <!-- /.card -->
         </div>
       </div>
     </div>
@@ -143,3 +69,33 @@ echo '<script>
   <?php
     include "../components/footer.php";
   ?>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        function drawChart() {
+            <?php
+            $sql = "SELECT order_user.date_now AS date, SUM(ls.price) AS total_sales FROM orders order_user LEFT JOIN users us ON 
+                    order_user.user_id = us.id LEFT JOIN lists ls ON order_user.list_id = ls.id LEFT JOIN cart ca 
+                    ON ca.id = order_user.cart_id LEFT JOIN brands br ON br.brand_id = order_user.brand_id 
+                    WHERE STATUS = 1 GROUP BY order_user.date_now";
+            $result = mysqli_query($conn, $sql);
+            ?>
+
+            // JavaScript code to draw chart
+            var data = new google.visualization.DataTable();
+            data.addColumn('date', 'Date');
+            data.addColumn('number', 'Sales');
+            <?php while($row = mysqli_fetch_assoc($result)) { ?>
+            data.addRow([new Date("<?php echo $row['date']; ?>"), <?php echo $row['total_sales']; ?>]);
+            <?php } ?>
+            var options = {
+                title: 'Sales by Date',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
