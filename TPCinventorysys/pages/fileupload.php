@@ -56,10 +56,9 @@ include '../components/sidebar.php';
                         $sql = "SELECT * FROM brands";
                         $result = mysqli_query($conn,$sql);
 
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo '<option name='.$row["id"].' value='.$row["id"].'>'.$row["brand_name"].'</options>';
-                        }
-                    ?>
+                        while($row = mysqli_fetch_assoc($result)) : ?>
+                            <option name="<?php echo $row['brand_id']; ?>" value="<?php echo $row['brand_id']; ?>"><?php echo $row['brand_name']?></option>
+                            <?php endwhile; ?>
                     </select>
                 </div>
                 

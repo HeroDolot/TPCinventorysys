@@ -38,6 +38,7 @@ $po_number = "";
                             <th>QUANTITY</th>
                             <th>UNIT PRICE</th>
                             <th>TOTAL PRICE</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="tbody tbody-striped text-center">
@@ -57,6 +58,7 @@ $po_number = "";
                                 <td><?php echo $row['quantity']; ?></td>
                                 <td><?php echo number_format($row['unit_price']) ?></td>
                                 <td><?php echo number_format($row['total_price']); ?></td>
+                                <td><button class="btn btn-success">Receive</button></td>
                             </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
@@ -68,6 +70,7 @@ $po_number = "";
                             <td><?php echo $row['quantity']; ?></td>
                             <td><?php echo number_format($row['unit_price']) ?></td>
                             <td><?php echo number_format($row['total_price']); ?></td>
+                            <td><button class="btn btn-success">Receive</button></td>
                         </tr>
                     <?php endwhile; ?>
                     <?php endif; ?>
@@ -85,6 +88,13 @@ $po_number = "";
     </div>
 </div>
 
+<div class="modal-body">
+    <p>How many receive quantity orders?</p>
+    <select name="" id="" class="form-control">
+        Reason of Denying
+        <option value="<?php echo $row['id']; ?>"><?php echo $row['ref_no']; ?></option>
+    </select>
+</div>
 <?php include '../components/footer.php'; ?>
 
 <style>
