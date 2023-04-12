@@ -8,6 +8,7 @@
 
     $sql = "SELECT brands.brand_name AS brand_name, lists.names, lists.descriptions, lists.ptype, lists.label, lists.quantity, lists.price, lists.id FROM lists INNER JOIN brands ON lists.brand_id = brands.brand_id";
     $result = mysqli_query($conn, $sql);
+
 ?>
 
     <div class="container-fluid">
@@ -15,7 +16,10 @@
             <div class="row">
             <?php $i = 0; ?>
 
-            <?php while ($row = $result->fetch_assoc()) :  ?>
+            <?php while ($row = $result->fetch_assoc()) : 
+                    $markup = 10;
+                    $markup_amount = $row['price'] * ($markup / 100);
+                    $total_price = $row['price'] + $markup_amount; ?>
                 <div class="col-md-4">
                 <div class="card" style="width: 100%;">
                    <img src="../assets/images/AddItem/<?php echo $row['names']; ?>" class="card-img-top" alt="...">
@@ -28,7 +32,7 @@
                              <br>
                              <h3 class="card-title">Quantity: <?php echo $row['quantity']; ?> </h3>
                              <br>
-                             <h3 class="card-title">Price: <?php echo number_format($row['price']); ?></h3>
+                             <h3 class="card-title">Price: <?php echo number_format($total_price, 2); ?></h3>
                             <p class="card-text">About: <?php echo $row['descriptions']; ?> </p>
                              <br>   
                              <br>   

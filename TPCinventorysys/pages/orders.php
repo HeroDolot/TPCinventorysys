@@ -85,7 +85,7 @@ $id = "";
                                         <p>Are you sure you want to deny this request?</p>
                                         <select name="" id="" class="form-control">
                                             Reason of Denying
-                                            <option value="<?php echo $row['id']; ?>"><?php echo $row['ref_no']; ?></option>
+                                            <option value="Invalid">Invalid Reference Number</option>
                                         </select>
                                     </div>
                                     <div class="modal-footer">

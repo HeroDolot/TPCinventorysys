@@ -74,6 +74,12 @@ while ($row = mysqli_fetch_assoc($results)) {
                 <p>Inventory</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="../pages/stocks.php" class="nav-link">
+                <i class="far fa fa-boxes-stacked nav-icon"></i>
+                <p>Stocks</p>
+              </a>
+            </li>
           </ul>
         </li>
         <!-- New dropdown -->

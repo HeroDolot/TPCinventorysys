@@ -11,8 +11,9 @@ $offset = 0;
 $limit = $total_records_per_page;
 $total_records = 0;
 $total_pages = 0;
+$ptype_filter = "";
 
-if (isset($_GET['page_no']) &&  $_GET['page_no'] !== "") {
+if (isset($_GET['page_no']) && $_GET['page_no'] !== "") {
   $page_no = $_GET['page_no'];
 }else {
   $page_no = 1;
@@ -27,36 +28,37 @@ $total_records = $row['total'];
 $total_pages = ceil($total_records / $total_records_per_page);
 
 if (isset($_GET['ptype']) && $_GET['ptype'] !== "") {
-    $ptype_filter = $_GET['ptype'];
-    if ($ptype_filter === "Brand New" || $ptype_filter === "Surplus") {
-      $sql = "SELECT lists.*, brands.brand_name FROM lists JOIN brands ON brands.brand_id = lists.brand_id WHERE lists.ptype='$ptype_filter' LIMIT $offset, $limit";
-    } else {
-      // handle invalid filter value
-      echo "Invalid filter value";
-      exit();
-    }
+  $ptype_filter = $_GET['ptype'];
+  if ($ptype_filter === "Brand New" || $ptype_filter === "Surplus") {
+    $sql = "SELECT lists.*, brands.brand_name FROM lists JOIN brands ON brands.brand_id = lists.brand_id WHERE lists.ptype='$ptype_filter' LIMIT $offset, $limit";
   } else {
-    $sql = "SELECT lists.*, brands.brand_name FROM lists JOIN brands ON brands.brand_id = lists.brand_id LIMIT $offset, $limit";
+    // handle invalid filter value
+    echo "Invalid filter value";
+    exit();
   }
+} else {
+  $sql = "SELECT lists.*, brands.brand_name FROM lists JOIN brands ON brands.brand_id = lists.brand_id LIMIT $offset, $limit";
+}
+
 
 $result = $conn->query($sql);
 echo '<div class="content-wrapper">
     <div class="content">
     <div class="container">
         <div class="card">
-             <div class="card-header font-weight-bold text-info text-xl">Inventory</div>
+             <div class="card-header font-weight-bold text-info text-xl">Stocks</div>
              <div class="card-body"></div>
 
              <form method="get" action="">
-             <select name="ptype" id="ptype" class="form-control col-md-2 mb-3">
-               <option value="" disabled selected>Select your option</option>
-               <option>Brand New</option> 
-               <option>Surplus</option> 
-             </select>
+                <select name="ptype" id="ptype" class="form-control col-md-2 mb-3">
+                  <option value="" disabled selected>Select your option</option>
+                  <option>Brand New</option> 
+                  <option>Surplus</option> 
+                </select>
 
                 <button type="submit" name="submit" class="btn btn-primary mb-3 adjust-button">Filter</button>
-             </form>
-             
+              </form>
+
                 <table class="table table-striped table-dark">
             <thead class="thead-dark">
             <tr>
@@ -74,25 +76,22 @@ echo '<div class="content-wrapper">
             </thead>
             <tbody>';
 
-            
+        
 
-// $count = 1;
+
 while ($row = $result->fetch_assoc()) {
-    $markup = 10;
-    $markup_amount = $row['price'] * ($markup / 100);
-    $total_price = $row['price'] + $markup_amount;
-    echo '<tr>';
-    echo '<form action="../CRUD/inventory-edit.php" method="get">';
-    echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-    echo '<td>'.$row['product_code'].'</td>';
-    echo '<td><img src="../assets/images/'.$row['foldername'].'/'.$row['names'].'" width="150px "></img></td>';
+  echo '<tr>';
+  echo '<form action="../CRUD/inventory-edit.php" method="get">';
+  echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+  echo '<td>'.$row['product_code'].'</td>';
+  echo '<td><img src="../assets/images/'.$row['foldername'].'/'.$row['names'].'" width="150px "></img></td>';
     echo '<td>'.$row['foldername'].'</td>';
     echo '<td>'.$row['names'].'</td>';
     echo '<td>'.$row['ptype'].'</td>';
     echo '<td>'.$row['category'].'</td>';
     echo '<td>'.$row['brand_name'].'</td>';
     echo '<td>'.$row['quantity'].'</td>';
-    echo '<td>'.number_format($total_price, 2).'</td>';
+    echo '<td>'.number_format($row['price']).'</td>';
     echo '<td>
            <button type="submit" class="btn btn-info">UPDATE</button>
            <a href="../CRUD/inventory-delete.php?id=' . $row['id'] . '" class="btn btn-danger">DELETE</a>
