@@ -69,6 +69,12 @@ while ($row = mysqli_fetch_assoc($results)) {
               </a>
             </li>
             <li class="nav-item">
+              <a href="../pages/items.php" class="nav-link">
+                <i class="far fa fa-solid fa-box nav-icon"></i>
+                <p>Items</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="../pages/inventory.php" class="nav-link">
                 <i class="far fa fa-boxes-stacked nav-icon"></i>
                 <p>Inventory</p>

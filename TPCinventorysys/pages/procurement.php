@@ -12,6 +12,11 @@ $supplier_id = 'supplier_id';
 $sql = "SELECT supplier.*, categories.product_type AS item_name
     FROM supplier
     LEFT JOIN categories ON supplier.supplier_id=categories.id WHERE supplier_name = $supplier_name;";
+// $sql = "SELECT supplier.*, items.item_name AS item_name
+//         FROM supplier
+//         LEFT JOIN items ON supplier.supplier_id=items.itemID
+//         WHERE supplier_name = '$supplier_name';";
+
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -61,9 +66,10 @@ $result = mysqli_query($conn, $sql);
                   <div class="col-md-4 form-group">
                     <label for="item_name">Item Name</label>
                     <select name="item_name" id="product_type" class="form-control">';
-                        $results = mysqli_query($conn, $sql);
-                        while ($row = mysqli_fetch_assoc($results)) {
-                            echo '<option value="' . $row['item_name'] . '">' . $row['item_name'] . '</option>';
+                        $sql_items = "SELECT * FROM items";
+                        $results_items = mysqli_query($conn, $sql_items);
+                        while ($row_items = mysqli_fetch_assoc($results_items)) {
+                            echo '<option value="' . $row_items['itemName'] . '">' . $row_items['itemName'] . '</option>';
                         }
                         echo '</select>
                    </div>
@@ -71,9 +77,11 @@ $result = mysqli_query($conn, $sql);
                     <label for="quantity">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity">
                    </div>
-                   <div class="col-md-2 form-group">
-                    <label for="unit_price">Unit Price</label>
-                    <input type="number" class="form-control" id="unit_price" name="unit_price" step="0.01">
+                   <div class="col-md-2 form-group">';
+                        $sql_price = "SELECT * FROM items";
+                        $result_price = mysqli_query($conn, $sql_price);
+                    echo  '<label for="unit_price">Unit Price</label>
+                    <input type="number" class="form-control" id="unit_price" name="unit_price" step="0.01" readonly>
                    </div>
                    <div class="col-md-2 form-group">
                     <label for="total_price">Total Price</label>
